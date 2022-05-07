@@ -1,2 +1,2 @@
-# pok-dex-react
+# pokedex-react
 pokédex react typescrip
