@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Header from "../components/Header"
+import PokemonsList from "../components/PokemonsList"
 
 export default function Home() {
     return (
@@ -10,8 +11,10 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="flex items-center justify-center">
+            <main className="flex flex-col items-center justify-center">
                <Header/>
+               <PokemonsList/>
+               
             </main>
         </>
     )
