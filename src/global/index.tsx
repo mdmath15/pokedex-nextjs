@@ -13,7 +13,7 @@ interface PokemonContext {
 
 export const PokemonContext = createContext({} as PokemonContext)
 
-export const PokemonProvider = ({ children }: PokemonProviderProps) => {
+export const PokemonProvider = ({ children }: PokemonProviderProps, props: any) => {
     const [pokemons, setPokemons] = useState<PokemonResult[] | null>(null)
     const [isLoading, setIsLoading] = useState(false)
 

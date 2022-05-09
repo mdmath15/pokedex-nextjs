@@ -1,9 +1,11 @@
-import { useContext, useEffect } from "react"
-import { PokemonContext } from "../../global"
+import { PokemonDetails } from "../../types"
 import PokemonCard from "../PokemonCard"
 
-export default function PokemonsList() {
-    const { pokemons } = useContext(PokemonContext)
+interface PokemonListProps {
+    pokemons: PokemonDetails[]
+}
+
+export default function PokemonsList({pokemons}: PokemonListProps) {
 
     return (
         <div className=" container max-w-7xl p-4 flex items-center justify-center gap-4 flex-wrap">

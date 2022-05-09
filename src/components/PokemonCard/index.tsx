@@ -7,25 +7,19 @@ import { PokemonDetails, PokemonResult, Stats } from "../../types/"
 import { pokemonTypeColors } from "./styles"
 
 interface PokemonCardProps {
-    pokemonInfo: PokemonResult
+    pokemonInfo: PokemonDetails
 }
 
 export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
-    const [pokemon, setPokemon] = useState<PokemonDetails | null>(null)
-
-    useEffect(() => {
-        getPokemonsDetails(pokemonInfo, setPokemon)
-    }, [pokemonInfo])
-
     return (
         <>
-            {pokemon && (
+            {pokemonInfo && (
                 <div className="max-w[304px] flex flex-col shadow-md px-4 py-2 gap-2">
-                    <Image src={pokemon.image} alt="Pokemon" width={200} height={200} />
-                    <span className="text-zinc-500">Nº{pokemon.id}</span>
-                    <h3 className=" text-xl capitalize">{pokemon.name}</h3>
+                    <Image src={pokemonInfo.image} alt="Pokemon" width={200} height={200} />
+                    <span className="text-zinc-500">Nº{pokemonInfo.id}</span>
+                    <h3 className=" text-xl capitalize">{pokemonInfo.name}</h3>
                     <div className="flex justify-between">
-                        {pokemon.types.map((type: string) => (
+                        {pokemonInfo.types.map((type: string) => (
                             <span
                                 key={type}
                                 className="w-24 rounded-md text-center text-zinc-100 "
