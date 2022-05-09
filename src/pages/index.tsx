@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         .get(`/pokemon?limit=20&offset=0`)
         .then(({ data }) => data.results)
 
-    const pokeNames = pokemonsResult.map((pokemon) => pokemon.name)
+    const pokeNames: string[] = pokemonsResult.map((pokemon) => pokemon.name)
 
     const pokemonDetails = pokeNames.map(
         async (pokemon) => await api.get(`/pokemon/${pokemon}`).then(({ data }) => data)

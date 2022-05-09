@@ -1,9 +1,5 @@
-import { GetServerSideProps, PreviewData } from "next"
 import Image from "next/image"
-import { useEffect, useState } from "react"
-import { api } from "../../services/api"
-import { getPokemonsDetails } from "../../services/getPokemonsDetails"
-import { PokemonDetails, PokemonResult, Stats } from "../../types/"
+import { PokemonDetails } from "../../types/"
 import { pokemonTypeColors } from "./styles"
 
 interface PokemonCardProps {

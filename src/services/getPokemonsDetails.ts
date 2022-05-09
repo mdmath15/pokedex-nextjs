@@ -1,4 +1,3 @@
-
 import { PokemonDetails, PokemonResult, Stats } from '../types'
 import { api } from './api'
 
