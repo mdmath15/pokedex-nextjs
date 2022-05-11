@@ -1,6 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import Head from "next/head"
-import { useEffect, useState } from "react"
 import Header from "../components/Header"
 import PokemonsList from "../components/PokemonsList"
 import { api } from "../services/api"
@@ -15,12 +14,13 @@ import { Pagination } from "@nextui-org/react"
 import { useRouter } from "next/router"
 
 
+
 export default function Home({
     pokemons,
     page
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter()
-
+    
     return (
         <>
             <Head>
@@ -33,10 +33,11 @@ export default function Home({
                 <Header />
                 <PokemonsList pokemons={pokemons} />
                 <Pagination
+                className="my-4"
                     total={20}
                     initialPage={1}
                     onChange={(page: number) => {
-                        router.push(`/?page=${page}`)
+                        router.push(`/?page=${page}`, undefined, { scroll: false })
                     }}
                 />
             </main>

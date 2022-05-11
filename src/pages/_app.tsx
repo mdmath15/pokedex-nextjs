@@ -4,9 +4,9 @@ import { PokemonProvider } from "../global"
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <>
+        <PokemonProvider>
             <Component {...pageProps} />
-        </>
+        </PokemonProvider>
     )
 }
 

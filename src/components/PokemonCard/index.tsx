@@ -1,4 +1,6 @@
 import Image from "next/image"
+import { useContext } from "react"
+import { PokemonContext } from "../../global"
 import { PokemonDetails } from "../../interfaces"
 import { pokemonTypeColors } from "./styles"
 
@@ -7,6 +9,17 @@ interface PokemonCardProps {
 }
 
 export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
+    const {pokedex, setPokedex} = useContext(PokemonContext)
+
+    const addToPokedex = (pokemonInfo: PokemonDetails) => {
+        if (pokedex.includes(pokemonInfo)) {
+            return alert("Pokémon já está na sua Pokédex")
+        } else {
+            setPokedex([...pokedex, pokemonInfo])
+            alert("Pokémon adicionado com sucesso à sua Pokédex")
+        }
+    }
+    
     return (
         <>
             {pokemonInfo && (
@@ -27,7 +40,10 @@ export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
                             </span>
                         ))}
                     </div>
-                    <button className="w-full py-2 rounded-md text-zinc-100 bg-blue-400">
+                    <button 
+                    onClick={() => addToPokedex(pokemonInfo)}
+                    className="w-full py-2 rounded-md text-zinc-100 bg-blue-400"
+                    >
                         Adicionar á Pokédex
                     </button>
                 </div>
