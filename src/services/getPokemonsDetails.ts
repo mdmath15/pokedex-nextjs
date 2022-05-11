@@ -1,26 +1,22 @@
-import { PokemonDetails, PokemonResult, Stats } from '../types'
-import { api } from './api'
+import { Ability, PokemonDetails, PokemonDetailsResponse, Stat, Type } from "../interfaces"
 
-export async function getPokemonsDetails(pokemon: PokemonResult, setPokemon: (pokemon:  PokemonDetails) => void) {
-    await api.get(`/pokemon/${pokemon.name}`).then(({ data }) => {
-        setPokemon({
-            id: data.id,
-            name: data.name,
-            image: data.sprites.other["official-artwork"].front_default,
-            types: data.types.map(
-                (type: { [key: string]: { name: string } }) => type.type.name
-            ),
-            abilities: data.abilities.map(
-                (ability: { [key: string]: { name: string } }) => ability.ability.name
-            ),
-            height: data.height,
-            weight: data.weight,
-            stats: data.stats.map((stat: { [key: string]: Stats }) => {
+export function getPokemonsDetails(pokemon: PokemonDetailsResponse[]): PokemonDetails[] {
+    const pokemons: PokemonDetails[] = pokemon.map((pokemon: PokemonDetailsResponse) => {
+        return {
+            id: pokemon.id,
+            name: pokemon.name,
+            image: pokemon.sprites.other["official-artwork"].front_default,
+            types: pokemon.types.map((type: Type) => type.type.name),
+            abilities: pokemon.abilities.map((ability: Ability) => ability.ability.name),
+            height: pokemon.height,
+            weight: pokemon.weight,
+            stats: pokemon.stats.map((stat: Stat) => {
                 return {
                     name: stat.stat.name,
                     value: stat.base_stat,
                 }
             }),
-        })
+        }
     })
+    return pokemons
 }

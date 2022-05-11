@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { PokemonDetails } from "../../types/"
+import { PokemonDetails } from "../../interfaces"
 import { pokemonTypeColors } from "./styles"
 
 interface PokemonCardProps {

@@ -1,14 +1,26 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import Head from "next/head"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "../components/Header"
 import PokemonsList from "../components/PokemonsList"
 import { api } from "../services/api"
-import { PokemonDetails, PokemonResult, Stats } from "../types"
+import { getPokemonsDetails } from "../services/getPokemonsDetails"
+import {
+    PokemonDetails,
+    PokemonDetailsResponse,
+    PokemonResponse,
+    PokemonResult,
+} from "../interfaces"
+import { Pagination } from "@nextui-org/react"
+import { useRouter } from "next/router"
 
-export default function Home({ pokemons }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const [pokemonsList, setPokemonsList] = useState<PokemonDetails[]>(pokemons)
-    
+
+export default function Home({
+    pokemons,
+    page
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    const router = useRouter()
+
     return (
         <>
             <Head>
@@ -19,48 +31,43 @@ export default function Home({ pokemons }: InferGetServerSidePropsType<typeof ge
 
             <main className="flex flex-col items-center justify-center">
                 <Header />
-                <PokemonsList pokemons={pokemonsList}/>
+                <PokemonsList pokemons={pokemons} />
+                <Pagination
+                    total={20}
+                    initialPage={1}
+                    onChange={(page: number) => {
+                        router.push(`/?page=${page}`)
+                    }}
+                />
             </main>
         </>
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const pokemonsResult: PokemonResult[] = await api
-        .get(`/pokemon?limit=20&offset=0`)
-        .then(({ data }) => data.results)
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+    const page = query.page ? parseInt(query.page as string) : 1
 
-    const pokeNames: string[] = pokemonsResult.map((pokemon) => pokemon.name)
+    const pokemonResponse: PokemonResponse = await api
+        .get(`/pokemon?offset=${(page - 1) * 20}&limit=20`)
+        .then((res) => res.data)
+        .catch((err) => console.log(err.response))
 
-    const pokemonDetails = pokeNames.map(
-        async (pokemon) => await api.get(`/pokemon/${pokemon}`).then(({ data }) => data)
+    const pokemonNames: string[] = pokemonResponse.results.map(
+        (pokemon: PokemonResult) => pokemon.name
     )
 
-    const response = await Promise.all(pokemonDetails)
+    const pokemonDetailsResponse = pokemonNames.map(
+        async (pokemon: string) => await api.get(`/pokemon/${pokemon}`).then((res) => res.data)
+    )
 
-    const pokemons: PokemonDetails[] = response.map((pokemon) => {
-        return {
-            id: pokemon.id,
-            name: pokemon.name,
-            image: pokemon.sprites.other["official-artwork"].front_default,
-            types: pokemon.types.map((type: { [key: string]: { name: string } }) => type.type.name),
-            abilities: pokemon.abilities.map(
-                (ability: { [key: string]: { name: string } }) => ability.ability.name
-            ),
-            height: pokemon.height,
-            weight: pokemon.weight,
-            stats: pokemon.stats.map((stat: { [key: string]: Stats }) => {
-                return {
-                    name: stat.stat.name,
-                    value: stat.base_stat,
-                }
-            }),
-        }
-    })
+    const pokemonDetailsResult: PokemonDetailsResponse[] = await Promise.all(pokemonDetailsResponse)
+    
+    const pokemons: PokemonDetails[] = getPokemonsDetails(pokemonDetailsResult)
 
     return {
         props: {
             pokemons,
+            page,
         },
     }
 }

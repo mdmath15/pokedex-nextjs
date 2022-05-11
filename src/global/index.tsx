@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react"
 import { api } from "../services/api"
-import { PokemonResult} from "../types"
+import { PokemonResult} from "../interfaces"
 
 interface PokemonProviderProps {
     children: ReactNode
