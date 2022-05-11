@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useState } from "react"
-
-import { PokemonDetails, PokemonResult} from "../interfaces"
+import { PokemonDetails} from "../interfaces"
 
 interface PokemonProviderProps {
     children: ReactNode
@@ -14,7 +13,7 @@ interface PokemonContext {
 export const PokemonContext = createContext({} as PokemonContext)
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
-    const [pokedex, setPokedex] = useState<PokemonDetails[] | []>([] as PokemonDetails[])
+    const [pokedex, setPokedex] = useState<PokemonDetails[]>([] as PokemonDetails[])
     
 
     return (
