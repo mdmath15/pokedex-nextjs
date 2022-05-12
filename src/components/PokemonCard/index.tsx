@@ -9,17 +9,18 @@ interface PokemonCardProps {
 }
 
 export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
-    const {pokedex, setPokedex} = useContext(PokemonContext)
+    const { pokedex, setPokedex } = useContext(PokemonContext)
 
     const addToPokedex = (pokemonInfo: PokemonDetails) => {
-        if (pokedex.includes(pokemonInfo)) {
-            return alert("Pokémon já está na sua Pokédex")
-        } else {
-            setPokedex([...pokedex, pokemonInfo])
-            alert("Pokémon adicionado com sucesso à sua Pokédex")
-        }
+        setPokedex([...pokedex, pokemonInfo])
+        alert("Pokémon adicionado com sucesso à sua Pokédex")
     }
-    
+
+    const removeFromPokedex = (pokemonInfo: PokemonDetails) => {
+        setPokedex(pokedex.filter((pokemon) => pokemon.name !== pokemonInfo.name))
+        alert("Pokémon removido com sucesso da sua Pokédex")
+    }
+
     return (
         <>
             {pokemonInfo && (
@@ -40,12 +41,21 @@ export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
                             </span>
                         ))}
                     </div>
-                    <button 
-                    onClick={() => addToPokedex(pokemonInfo)}
-                    className="w-full py-2 rounded-md text-zinc-100 bg-blue-400"
-                    >
-                        Adicionar á Pokédex
-                    </button>
+                    {pokedex.includes(pokemonInfo) ? (
+                        <button
+                            onClick={() => removeFromPokedex(pokemonInfo)}
+                            className="w-full py-2 rounded-md text-zinc-100 bg-red-400 hover:bg-red-500 transition-colors"
+                        >
+                            Remover da Pokédex
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => addToPokedex(pokemonInfo)}
+                            className="w-full py-2 rounded-md text-zinc-100 bg-blue-400 hover:bg-blue-500 transition-colors"
+                        >
+                            Adicionar á Pokédex
+                        </button>
+                    )}
                 </div>
             )}
         </>
