@@ -1,4 +1,4 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next"
 import Head from "next/head"
 import Header from "../components/Header"
 import PokemonsList from "../components/PokemonsList"
@@ -13,13 +13,14 @@ import {
 import { Pagination } from "@nextui-org/react"
 import { useRouter } from "next/router"
 
+interface HomeProps {
+    pokemons: PokemonDetails[]
+    page: number
+}
 
-export default function Home({
-    pokemons,
-    page
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({ pokemons, page }: HomeProps) {
     const router = useRouter()
-    
+
     return (
         <>
             <Head>
@@ -32,7 +33,7 @@ export default function Home({
                 <Header />
                 <PokemonsList pokemons={pokemons} />
                 <Pagination
-                className="my-4"
+                    className="my-4"
                     total={45}
                     initialPage={1}
                     page={page}
@@ -62,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     )
 
     const pokemonDetailsResult: PokemonDetailsResponse[] = await Promise.all(pokemonDetailsResponse)
-    
+
     const pokemons: PokemonDetails[] = getPokemonsDetails(pokemonDetailsResult)
 
     return {
