@@ -12,8 +12,6 @@ import {
 } from "../interfaces"
 import { Pagination } from "@nextui-org/react"
 import { useRouter } from "next/router"
-import { Spinner } from "phosphor-react"
-
 
 
 export default function Home({
@@ -35,8 +33,9 @@ export default function Home({
                 <PokemonsList pokemons={pokemons} />
                 <Pagination
                 className="my-4"
-                    total={20}
+                    total={45}
                     initialPage={1}
+                    page={page}
                     onChange={(page: number) => {
                         router.push(`/?page=${page}`, undefined, { scroll: false })
                     }}

@@ -4,7 +4,7 @@ import pokemonImageUrl from "../../../public/pokemon.svg"
 
 export default function Header() {
     return (
-        <header className="w-full px-8 flex justify-between items-center bg-blue-400">
+        <header className="w-full h-28 box-border px-8 flex justify-between items-center bg-blue-400">
             <Link href={"/"}>
                 <a>
                     <Image

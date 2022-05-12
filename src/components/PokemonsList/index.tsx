@@ -7,15 +7,12 @@ interface PokemonListProps {
     pokedex?: PokemonDetails[]
 }
 
-export default function PokemonsList({ pokemons, pokedex }: PokemonListProps) {
+export default function PokemonsList({ pokemons}: PokemonListProps) {
     return (
         <>
             <div className=" container max-w-7xl p-4 flex items-center justify-center gap-4 flex-wrap">
                 {pokemons?.map((pokemon) => (
                     <PokemonCard key={pokemon.name} pokemonInfo={pokemon} />
-                ))}
-                {pokedex?.map((pokedex) => (
-                    <PokemonCard key={pokedex.name} pokemonInfo={pokedex} />
                 ))}
             </div>
         </>

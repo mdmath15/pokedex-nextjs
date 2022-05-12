@@ -11,6 +11,10 @@ interface PokemonCardProps {
 export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
     const { pokedex, setPokedex } = useContext(PokemonContext)
 
+    const pokemonCaptured: PokemonDetails | undefined = pokedex.find(
+        (pokemon) => pokemon.name === pokemonInfo.name
+    )
+
     const addToPokedex = (pokemonInfo: PokemonDetails) => {
         setPokedex([...pokedex, pokemonInfo])
         alert("Pokémon adicionado com sucesso à sua Pokédex")
@@ -41,7 +45,7 @@ export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
                             </span>
                         ))}
                     </div>
-                    {pokedex.includes(pokemonInfo) ? (
+                    {pokemonCaptured ? (
                         <button
                             onClick={() => removeFromPokedex(pokemonInfo)}
                             className="w-full py-2 rounded-md text-zinc-100 bg-red-400 hover:bg-red-500 transition-colors"
