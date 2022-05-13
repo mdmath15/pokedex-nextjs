@@ -5,11 +5,11 @@ import { NextUIProvider } from "@nextui-org/react"
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <PokemonProvider>
-            <NextUIProvider>
-            <Component {...pageProps} />
-            </NextUIProvider>
-        </PokemonProvider>
+        <NextUIProvider>
+            <PokemonProvider>
+                <Component {...pageProps} />
+            </PokemonProvider>
+        </NextUIProvider>
     )
 }
 
