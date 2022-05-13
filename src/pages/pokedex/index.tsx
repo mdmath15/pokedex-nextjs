@@ -14,7 +14,15 @@ export default function Pokedex() {
         <>
             <Layout title="Pokédex">
                 {pokedex.length ? (
-                    <PokemonsList pokemons={pokedex} />
+                    <section className="w-full flex flex-col items-center justify-center">
+                        <div className="max-w-[1280px] w-full p-4">
+                            <h3 className="text-3xl text-zinc-600">
+                                Pokémons capturados:{" "}
+                                <span className="font-bold text-zinc-700">{pokedex.length}</span>
+                            </h3>
+                        </div>
+                        <PokemonsList pokemons={pokedex} />
+                    </section>
                 ) : (
                     <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-112px)]">
                         <Image

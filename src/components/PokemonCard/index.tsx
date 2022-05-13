@@ -31,12 +31,12 @@ export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
                 <div className="max-w[304px] flex flex-col shadow-md px-4 py-2 gap-2">
                     <Image src={pokemonInfo.image} alt="Pokemon" width={200} height={200} />
                     <span className="text-zinc-500">Nº{pokemonInfo.id}</span>
-                    <h3 className=" text-xl capitalize">{pokemonInfo.name}</h3>
+                    <h3 className=" text-xl uppercase font-[500] text-zinc-600">{pokemonInfo.name}</h3>
                     <div className="flex justify-between">
                         {pokemonInfo.types.map((type: string) => (
                             <span
                                 key={type}
-                                className="w-24 rounded-md text-center text-zinc-100 "
+                                className="w-24 rounded-md text-center text-white "
                                 style={{
                                     backgroundColor: pokemonTypeColors[type].color,
                                 }}

@@ -25,7 +25,9 @@ export default function Home({ pokemons, page }: HomeProps) {
     return (
         <>
             <Layout title="Home - Pokédex">
-                <PokemonsList pokemons={pokemons} />
+                <section className="w-full flex items-center justify-center">
+                    <PokemonsList pokemons={pokemons} />
+                </section>
                 <Pagination
                     className="my-4"
                     total={45}
