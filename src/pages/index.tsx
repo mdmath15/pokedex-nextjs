@@ -12,6 +12,7 @@ import {
 } from "../interfaces"
 import { Pagination } from "@nextui-org/react"
 import { useRouter } from "next/router"
+import Layout from "../components/Layout"
 
 interface HomeProps {
     pokemons: PokemonDetails[]
@@ -23,14 +24,7 @@ export default function Home({ pokemons, page }: HomeProps) {
 
     return (
         <>
-            <Head>
-                <title>Pokédex - Home</title>
-                <meta name="description" content="Pokédex - Home" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
-            <main className="flex flex-col items-center justify-center">
-                <Header />
+            <Layout title="Home - Pokédex">
                 <PokemonsList pokemons={pokemons} />
                 <Pagination
                     className="my-4"
@@ -41,7 +35,7 @@ export default function Home({ pokemons, page }: HomeProps) {
                         router.push(`/?page=${page}`, undefined, { scroll: false })
                     }}
                 />
-            </main>
+            </Layout>
         </>
     )
 }

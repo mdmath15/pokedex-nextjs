@@ -5,20 +5,14 @@ import { useContext } from "react"
 import { PokemonContext } from "../../global"
 import pokeballImageUrl from "../../../public/pokeball.svg"
 import Image from "next/image"
+import Layout from "../../components/Layout"
 
 export default function Pokedex() {
     const { pokedex } = useContext(PokemonContext)
 
     return (
         <>
-            <Head>
-                <title>Pokédex - Minha Pokédex</title>
-                <meta name="description" content="Pokédex - Minha Pokédex" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
-            <main className="flex flex-col items-center justify-center">
-                <Header />
+            <Layout title="Pokédex">
                 {pokedex.length ? (
                     <PokemonsList pokemons={pokedex} />
                 ) : (
@@ -32,7 +26,7 @@ export default function Pokedex() {
                         <h2 className="text-4xl text-red-600 p-10">Pokédex vazia</h2>
                     </div>
                 )}
-            </main>
+            </Layout>
         </>
     )
 }
