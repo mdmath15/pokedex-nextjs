@@ -1,9 +1,7 @@
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next"
-import Head from "next/head"
-import Header from "../components/Header"
+import { GetServerSideProps } from "next"
 import PokemonsList from "../components/PokemonsList"
 import { api } from "../services/api"
-import { getPokemonsDetails } from "../services/getPokemonsDetails"
+import { getPokemonsDetails } from "../utils/getPokemonsDetails"
 import {
     PokemonDetails,
     PokemonDetailsResponse,
