@@ -13,7 +13,7 @@ import {
     Type,
 } from "../../interfaces"
 import { api } from "../../services/api"
-import  iconPokeballURL  from "../../../public/iconpokeball.svg"
+import iconPokeballURL from "../../../public/iconpokeball.svg"
 
 interface PokemonProps {
     pokemon: PokemonDetails
@@ -45,9 +45,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                                     {pokemon.name.toUpperCase()}
                                 </h1>
                             </div>
-                            <div
-                                className="self-center absolute bottom-52"
-                            >
+                            <div className="self-center absolute bottom-52">
                                 <Image src={pokemon.image} alt="Pokemon" width={320} height={320} />
                             </div>
                             <div className="self-center flex gap-12 absolute bottom-24">
@@ -61,6 +59,24 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                         </div>
 
                         <div className="w-1/2 flex flex-col justify-around items-center rounded-tr-md rounded-br-md">
+                            
+                        <div className="flex flex-col gap-8 items-center w-full">
+                                <h1 className="text-2xl text-zinc-600">Type</h1>
+                                <div className="flex w-1/2 justify-around">
+                                    {pokemon.types.map((type: string) => (
+                                        <span
+                                            key={type}
+                                            className="w-24 rounded-md text-center text-white "
+                                            style={{
+                                                backgroundColor: pokemonTypeColors[type].color,
+                                            }}
+                                        >
+                                            {type}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                            
                             <div className="flex flex-col gap-8 items-center w-full">
                                 <h1 className="text-2xl text-zinc-600">Stats</h1>
                                 <div className="w-1/2 flex flex-col gap-2">
