@@ -82,7 +82,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
 
                             <div className="flex flex-col gap-8 items-center w-full">
                                 <h1 className="text-2xl text-zinc-600">Abilities</h1>
-                                <div className="w-1/2 flex justify-between gap-2">
+                                <div className="w-1/2 flex flex-col gap-2">
                                     {pokemon.abilities.map((ability: string) => {
                                         return (
                                             <p
