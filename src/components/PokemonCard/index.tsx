@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 import { useContext } from "react"
 import { PokemonContext } from "../../global"
 import { PokemonDetails } from "../../interfaces"
@@ -10,6 +11,7 @@ interface PokemonCardProps {
 
 export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
     const { pokedex, setPokedex } = useContext(PokemonContext)
+    const router = useRouter()
 
     const pokemonCaptured: PokemonDetails | undefined = pokedex.find(
         (pokemon) => pokemon.name === pokemonInfo.name
@@ -28,22 +30,29 @@ export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
     return (
         <>
             {pokemonInfo && (
-                <div className="max-w[304px] flex flex-col shadow-md px-4 py-2 gap-2">
-                    <Image src={pokemonInfo.image} alt="Pokemon" width={200} height={200} />
-                    <span className="text-zinc-500">Nº{pokemonInfo.id}</span>
-                    <h3 className=" text-xl uppercase font-[500] text-zinc-600">{pokemonInfo.name}</h3>
-                    <div className="flex justify-between">
-                        {pokemonInfo.types.map((type: string) => (
-                            <span
-                                key={type}
-                                className="w-24 rounded-md text-center text-white "
-                                style={{
-                                    backgroundColor: pokemonTypeColors[type].color,
-                                }}
-                            >
-                                {type}
-                            </span>
-                        ))}
+                <div className="max-w[304px] flex flex-col shadow-md px-4 py-2 gap-2 cursor-pointer">
+                    <div
+                        className="flex flex-col"
+                        onClick={() => router.push(`/pokemon/${pokemonInfo.name}`)}
+                    >
+                        <Image src={pokemonInfo.image} alt="Pokemon" width={200} height={200} />
+                        <span className="text-zinc-500">Nº{pokemonInfo.id}</span>
+                        <h3 className=" text-xl uppercase font-[500] text-zinc-600">
+                            {pokemonInfo.name}
+                        </h3>
+                        <div className="flex justify-between">
+                            {pokemonInfo.types.map((type: string) => (
+                                <span
+                                    key={type}
+                                    className="w-24 rounded-md text-center text-white "
+                                    style={{
+                                        backgroundColor: pokemonTypeColors[type].color,
+                                    }}
+                                >
+                                    {type}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                     {pokemonCaptured ? (
                         <button

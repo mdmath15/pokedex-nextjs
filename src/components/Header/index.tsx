@@ -28,7 +28,7 @@ export default function Header() {
                             <a>Pokédex</a>
                         </li>
                     </Link>
-                    <Link href={"/batalha"}>
+                    <Link href={"/battle"}>
                         <li className="w-32 py-[48px] bg-red-600 hover:bg-red-800 transition-colors text-center text-white cursor-pointer">
                             <a>Batalha</a>
                         </li>
