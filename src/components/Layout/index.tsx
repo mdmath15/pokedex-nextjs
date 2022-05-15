@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Footer from "../Footer"
 import Header from "../Header"
 
 interface LayoutProps {
@@ -17,6 +18,7 @@ export default function Layout({ title, children }: LayoutProps) {
             <main className="flex flex-col items-center justify-center">
                 <Header />
                 {children}
+                <Footer/>
             </main>
         </>
     )
