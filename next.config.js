@@ -4,6 +4,16 @@ const nextConfig = {
     images: {
         domains: ["raw.githubusercontent.com"],
     },
+
+    async redirects() {
+        return  [
+            {
+                source: "/battle",
+                destination: "/",
+                permanent: false,
+            },
+        ]
+    },
 }
 
 module.exports = nextConfig

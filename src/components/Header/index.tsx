@@ -43,7 +43,7 @@ export default function Header() {
                             <li
                                 className={`${
                                     router.asPath == "/battle" ? "bg-red-600" : "bg-blue-400"
-                                } w-32 py-8 border-b-8 border-red-600 hover:bg-red-600 transition-colors text-center text-white cursor-pointer`}
+                                } w-32 py-8 border-b-8 border-red-600 hover:bg-red-600 transition-colors text-center text-white cursor-pointer disabled`}
                             >
                                 <a>Batalha</a>
                             </li>

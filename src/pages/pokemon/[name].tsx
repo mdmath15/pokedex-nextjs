@@ -3,7 +3,13 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import React from "react"
 import Layout from "../../components/Layout"
+import PokemonAbilitiesCard from "../../components/PokemonAbilitiesCard"
 import { pokemonTypeColors } from "../../components/PokemonCard/styles"
+import PokemonDetailsCard from "../../components/PokemonDetailsCard"
+import PokemonDetailsSection from "../../components/PokemonDetailsSection"
+import PokemonStatsCard from "../../components/PokemonStatsCard"
+import PokemonStatsSection from "../../components/PokemonStatsSection"
+import PokemonTypeCard from "../../components/PokemonTypeCard"
 import {
     Ability,
     BaseStatus,
@@ -28,90 +34,9 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                         className="text-red-500 self-start font-semibold transform hover:-translate-y-1 transition-transform ease-in duration-150 block"
                         onClick={() => router.back()}
                     >
-                        Voltar
+                        Go Back
                     </button>
-
-                    <div className="flex shadow-md w-full h-[744px] justify-center rounded-md relative">
-                        <div
-                            className="w-1/2 flex flex-col justify-between items-start rounded-tl-md rounded-bl-md"
-                            style={{
-                                backgroundColor: pokemonTypeColors[pokemon.types[0]].color,
-                            }}
-                        >
-                            <div className="px-6 pt-4">
-                                <span className="text-white text-base">#{pokemon.id}</span>
-                                <h1 className="text-4xl text-white py-4">
-                                    {pokemon.name.toUpperCase()}
-                                </h1>
-                            </div>
-                            <div className="self-center absolute bottom-52">
-                                <Image src={pokemon.image} alt="Pokemon" width={320} height={320} />
-                            </div>
-                            <div className="self-center flex gap-12 absolute bottom-24">
-                                <p className="text-2xl text-white">
-                                    Heigth <span className="px-2">{pokemon.height / 10} m</span>
-                                </p>
-                                <p className="text-2xl text-white">
-                                    Weight <span className="px-2">{pokemon.weight / 10} kg</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="w-1/2 flex flex-col justify-around items-center rounded-tr-md rounded-br-md">
-                            
-                        <div className="flex flex-col gap-8 items-center w-full">
-                                <h1 className="text-2xl text-zinc-600">Type</h1>
-                                <div className="flex w-1/2 justify-around">
-                                    {pokemon.types.map((type: string) => (
-                                        <span
-                                            key={type}
-                                            className="w-24 rounded-md text-center text-white "
-                                            style={{
-                                                backgroundColor: pokemonTypeColors[type].color,
-                                            }}
-                                        >
-                                            {type}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                            
-                            <div className="flex flex-col gap-8 items-center w-full">
-                                <h1 className="text-2xl text-zinc-600">Stats</h1>
-                                <div className="w-1/2 flex flex-col gap-2">
-                                    {pokemon.stats.map((stat: BaseStatus) => {
-                                        return (
-                                            <p
-                                                key={stat.name}
-                                                className="font-bold text-zinc-600 flex justify-between"
-                                            >
-                                                {stat.name.toUpperCase()}
-                                                <span className="font-medium text-blue-600">
-                                                    {stat.value}
-                                                </span>
-                                            </p>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-8 items-center w-full">
-                                <h1 className="text-2xl text-zinc-600">Abilities</h1>
-                                <div className="w-1/2 flex flex-col gap-2">
-                                    {pokemon.abilities.map((ability: string) => {
-                                        return (
-                                            <p
-                                                key={ability}
-                                                className="font-bold text-blue-600 flex justify-between"
-                                            >
-                                                {ability.toUpperCase()}
-                                            </p>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <PokemonDetailsSection pokemon={pokemon} />
                 </section>
             </Layout>
         </>
