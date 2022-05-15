@@ -2,7 +2,7 @@ import { EnvelopeSimple, GithubLogo, LinkedinLogo, WhatsappLogo } from "phosphor
 
 export default function Footer() {
     return (
-        <footer className="w-full  bg-zinc-700">
+        <footer className="w-full bg-zinc-700 mt-4">
             <div className="max-w-[1440px] mx-auto w-full flex flex-col items-center">
                 <h1 className="text-center p-8 font-medium text-zinc-200 tracking-wide">
                     Desenvolvido por Matheus Ribeiro
