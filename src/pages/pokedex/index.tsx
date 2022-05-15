@@ -16,9 +16,9 @@ export default function Pokedex() {
                 {pokedex.length ? (
                     <section className="w-full flex flex-col items-center justify-center">
                         <div className="max-w-[1280px] w-full p-4">
-                            <h3 className="text-3xl text-zinc-600">
+                            <h3 className="text-2xl text-zinc-600">
                                 Pokémons capturados:{" "}
-                                <span className="font-bold text-zinc-700">{pokedex.length}</span>
+                                <span className="font-bold text-blue-600">{pokedex.length}</span>
                             </h3>
                         </div>
                         <PokemonsList pokemons={pokedex} />

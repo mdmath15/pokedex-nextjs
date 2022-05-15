@@ -13,7 +13,6 @@ import {
     Type,
 } from "../../interfaces"
 import { api } from "../../services/api"
-import iconPokeballURL from "../../../public/iconpokeball.svg"
 
 interface PokemonProps {
     pokemon: PokemonDetails
@@ -32,7 +31,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                         Voltar
                     </button>
 
-                    <div className="flex shadow-md w-full h-screen justify-center rounded-md relative">
+                    <div className="flex shadow-md w-full h-[744px] justify-center rounded-md relative">
                         <div
                             className="w-1/2 flex flex-col justify-between items-start rounded-tl-md rounded-bl-md"
                             style={{
