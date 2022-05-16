@@ -15,10 +15,9 @@ export default function Pokedex() {
 			<Layout title='Pokédex'>
 				{pokedex.length ? (
 					<section className='w-full flex flex-col items-center justify-center'>
-						<div className='max-w-[1280px] w-full p-4'>
+						<div className='max-w-[1280px] w-full p-4 flex justify-end'>
 							<h3 className='text-2xl text-zinc-600'>
-								Pokémons capturados:{' '}
-								<span className='font-bold text-blue-600'>{pokedex.length}</span>
+								Captured Pokémons: <span className='font-bold text-blue-600'>{pokedex.length}</span>
 							</h3>
 						</div>
 						<PokemonsList pokemons={pokedex} />

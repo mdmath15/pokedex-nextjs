@@ -8,7 +8,7 @@ interface PokemonListProps {
 export default function PokemonsList({ pokemons }: PokemonListProps) {
 	return (
 		<>
-			<div className='container max-w-7xl p-6 flex items-center justify-center gap-4 flex-wrap'>
+			<div className='container max-w-7xl min-h-screen p-6 flex items-start justify-center gap-4 flex-wrap'>
 				{pokemons?.map((pokemon) => (
 					<PokemonCard key={pokemon.name} pokemonInfo={pokemon} />
 				))}

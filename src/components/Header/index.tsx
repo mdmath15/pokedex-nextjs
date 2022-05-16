@@ -27,7 +27,7 @@ export default function Header() {
 									router.asPath == '/' ? 'bg-blue-600' : 'bg-blue-400'
 								} w-32 py-8 border-b-8 border-blue-600 hover:bg-blue-600 transition-colors text-center text-white cursor-pointer`}
 							>
-								<a>Pokemons</a>
+								<a>Pokémons</a>
 							</li>
 						</Link>
 						<Link href={'/pokedex'}>
@@ -45,7 +45,7 @@ export default function Header() {
 									router.asPath == '/battle' ? 'bg-red-600' : 'bg-blue-400'
 								} w-32 py-8 border-b-8 border-red-600 hover:bg-red-600 transition-colors text-center text-white cursor-pointer disabled`}
 							>
-								<a>Batalha</a>
+								<a>Battle</a>
 							</li>
 						</Link>
 					</ul>
