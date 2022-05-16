@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
     const pokemonDetailsResult: PokemonDetailsResponse[] = await Promise.all(pokemonDetailsResponse)
 
-    const pokemons: PokemonDetails[] = getPokemonsDetails(pokemonDetailsResult)
+    const pokemons: PokemonDetails[] = getPokemonsDetails(pokemonDetailsResult) as PokemonDetails[]
 
     return {
         props: {
