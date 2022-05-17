@@ -8,7 +8,7 @@ interface PokemonDetailsSectionProps {
 
 export default function PokemonDetailsSection({ pokemon }: PokemonDetailsSectionProps) {
 	return (
-		<section className='flex shadow-md w-full h-[744px] justify-center rounded-md relative'>
+		<section className='flex md:flex-col shadow-md w-full h-[744px] md:min-h-fit md:h-full justify-center  md:gap-4 rounded-md relative'>
 			<PokemonDetailsCard pokemon={pokemon} />
 			<PokemonStatsSection pokemon={pokemon} />
 		</section>

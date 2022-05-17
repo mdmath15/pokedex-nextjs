@@ -19,12 +19,10 @@ export default function PokemonCard({ pokemonInfo }: PokemonCardProps) {
 
 	const addToPokedex = (pokemonInfo: PokemonDetails) => {
 		setPokedex([...pokedex, pokemonInfo])
-		alert('Pokémon adicionado com sucesso à sua Pokédex')
 	}
 
 	const removeFromPokedex = (pokemonInfo: PokemonDetails) => {
 		setPokedex(pokedex.filter((pokemon) => pokemon.name !== pokemonInfo.name))
-		alert('Pokémon removido com sucesso da sua Pokédex')
 	}
 
 	return (

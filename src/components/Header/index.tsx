@@ -7,7 +7,7 @@ export default function Header() {
 	const router = useRouter()
 	return (
 		<header className='w-full bg-blue-400 flex items-center justify-center'>
-			<div className='flex h-[88px] px-4 justify-between items-center max-w-[1440px] w-full'>
+			<div className='flex h-[88px] sm:h-[194px] sm:justify-center sm:flex-col px-4 justify-between items-center max-w-[1440px] w-full'>
 				<Link href={'/'}>
 					<a>
 						<Image
@@ -25,7 +25,7 @@ export default function Header() {
 							<li
 								className={`${
 									router.asPath == '/' ? 'bg-blue-600' : 'bg-blue-400'
-								} w-32 py-8 border-b-8 border-blue-600 hover:bg-blue-600 transition-colors text-center text-white cursor-pointer`}
+								} w-32 sm:w-24 py-8 border-b-8 border-blue-600 hover:bg-blue-600 transition-colors text-center text-white cursor-pointer`}
 							>
 								<a>Pokémons</a>
 							</li>
@@ -34,7 +34,7 @@ export default function Header() {
 							<li
 								className={`${
 									router.asPath == '/pokedex' ? 'bg-yellow-500' : 'bg-blue-400'
-								} w-32 py-8 border-b-8 border-yellow-500 hover:bg-yellow-500 transition-colors text-center text-white cursor-pointer`}
+								} w-32 sm:w-24 py-8 border-b-8 border-yellow-500 hover:bg-yellow-500 transition-colors text-center text-white cursor-pointer`}
 							>
 								<a>Pokédex</a>
 							</li>
@@ -43,7 +43,7 @@ export default function Header() {
 							<li
 								className={`${
 									router.asPath == '/battle' ? 'bg-red-600' : 'bg-blue-400'
-								} w-32 py-8 border-b-8 border-red-600 hover:bg-red-600 transition-colors text-center text-white cursor-pointer disabled`}
+								} w-32 sm:w-24 py-8 border-b-8 border-red-600 hover:bg-red-600 transition-colors text-center text-white cursor-pointer disabled`}
 							>
 								<a>Battle</a>
 							</li>
