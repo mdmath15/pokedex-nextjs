@@ -1,7 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-**Projeto React inspirado na Pokédex do anime Pokémon.
-Nele você pode criar sua própria pokédex com os seus pokémons preferidos.**
+<h1 align="center"><img src="https://raw.githubusercontent.com/mdmath15/pokedex-nextjs/main/public/pokemon.svg" /></h1>
+
+**Projeto React inspirado na Pokédex do anime Pokémon. Nele você pode criar sua própria pokédex com os seus pokémons preferidos.**
 
 ### 🤓📚 Desenvolvido por: 
 - [Matheus Lima Ribeiro](https://github.com/mdmath15)
